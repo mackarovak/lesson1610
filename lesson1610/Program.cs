@@ -8,14 +8,14 @@ namespace lesson1610
 {
     abstract class ObjectsofUniverse
     {
-        private string nameofobject = Console.ReadLine();
-        public double dimensionradius = Convert.ToDouble(Console.ReadLine());
+        private string nameofobject;
+        public double dimensionradius ;
         public int Dimensionradius { get; set; }
         public string Namesofobject { get; set; }
-        public ObjectsofUniverse (string nameofobject)
+        public ObjectsofUniverse (string nameofobject,int dimensionradius)
         {
-            string Nameofobject = nameofobject ;
-            double Dimensionradius = dimensionradius;
+            Namesofobject = nameofobject ;
+            Dimensionradius = dimensionradius;
         }
         public void Display()
         {
@@ -27,7 +27,7 @@ namespace lesson1610
         }
         public void Printname()
         {
-            Console.WriteLine(Namesofobject);
+            Console.WriteLine(Dimensionradius);
         }
         public double Dimension()
         {
@@ -37,8 +37,8 @@ namespace lesson1610
     class Planetas : ObjectsofUniverse
     {
         public int Position { get {return Position; } set { Position = value; } }
-        public Planetas(string nameofobject ,int position)
-            :base(nameofobject)
+        public Planetas(string nameofobject, int position)
+            : base(nameofobject)
         {
             Position = position;
         }
