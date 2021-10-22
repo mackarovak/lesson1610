@@ -9,13 +9,11 @@ namespace lesson1610
     abstract class ObjectsofUniverse
     {
         private string nameofobject;
-        public double dimensionradius ;
         public int Dimensionradius { get; set; }
         public string Namesofobject { get; set; }
-        public ObjectsofUniverse (string nameofobject,int dimensionradius)
+        public ObjectsofUniverse (string nameofobject)
         {
             Namesofobject = nameofobject ;
-            Dimensionradius = dimensionradius;
         }
         public void Display()
         {
@@ -29,9 +27,9 @@ namespace lesson1610
         {
             Console.WriteLine(Dimensionradius);
         }
-        public double Dimension()
+        public void AnythingaboutUniverse()
         {
-            return Math.PI * dimensionradius * dimensionradius;
+            Console.WriteLine("Не имеющее строгого определения понятие в астрономии и философии. Оно делится на две принципиально отличающиеся сущности: умозрительную и материальную, доступную наблюдениям в настоящее время или в обозримом будущем");
         }
     }
     class Planetas : ObjectsofUniverse
@@ -62,10 +60,10 @@ namespace lesson1610
     }
     class Stars : ObjectsofUniverse
     {
-        public string Brightness { get { return Brightness; } set {Brightness=value; } }
+        public string Brightness { get { return Brightness; } set { Brightness = value; } }
         public string Colour { get { return Colour; } set { Colour = value; } }
-        public Stars(string brightness, string colour,string nameofobject)
-            :base(nameofobject)
+        public Stars(string brightness, string colour, string nameofobject)
+            : base(nameofobject)
         {
             Brightness = brightness;
             Colour = colour;
@@ -82,52 +80,53 @@ namespace lesson1610
         {
             Console.WriteLine(Namesofobject);
         }
-        public double Dimensionss()
+        public void BooksofStars()
         {
-            return Math.PI * dimensionradius * dimensionradius;
+            Console.WriteLine("{«Суперобъекты. Звезды размером с город»} \n {«Разведка далеких планет»} \n {«Космос Эйнштейна»}");
         }
-    }
-    class Satellite : ObjectsofUniverse
-    {
-        public string Orbitradius { get { return Orbitradius; } set { Orbitradius = value; } }
-        public Satellite(string radius, string nameofobject)
-            : base(nameofobject)
+        class Satellite : ObjectsofUniverse
         {
-            Orbitradius = radius;
-        }
-        public void Mainn()
-        {
-            return ;
-        }
-        public void PrintY()
-        {
-            Console.WriteLine("i have no imagination");
-        }
-        public void Object()
-        {
-            Console.WriteLine(Orbitradius);
-        }
-        public string dimen()
-        {
-            if (Orbitradius.Equals(5))
+            public string Orbitradius { get { return Orbitradius; } set { Orbitradius = value; } }
+            public Satellite(string radius, string nameofobject)
+                : base(nameofobject)
             {
-                return Orbitradius;
+                Orbitradius = radius;
             }
-            return "Не круто";
+            public void Mainn()
+            {
+                return;
+            }
+            public void PrintY()
+            {
+                Console.WriteLine("i have no imagination");
+            }
+            public void Object()
+            {
+                Console.WriteLine(Orbitradius);
+            }
+            public string dimen()
+            {
+                if (Orbitradius.Equals(5))
+                {
+                    return Orbitradius;
+                }
+                return "Не круто";
+            }
+            public void Proposition()
+            {
+                Console.WriteLine("Ураа,всеее");
+            }
         }
-        public void Proposition()
+        class Program
         {
-            Console.WriteLine("Ураа,всеее");
+            static void Main(string[] args)
+            {
+                string radius = Console.ReadLine();
+                string satellites = Console.ReadLine();
+                Satellite satellite = new Satellite(radius, satellites);
+                Stars star = new Stars("0,14", "белый", "Вега");
+                Planetas planeta = new Planetas("Земля", 4);
+            }
         }
-    }
-    class Program
-    {
-        static void Main ( string[] args)
-        {
-            Satellite satellite = new Satellite("1815 км","спутник Юпитера-Ио");
-            Stars star = new Stars("0,14", "белый","Вега");
-            Planetas planeta = new Planetas("Земля", 4);
-        }
-
     }
 }
