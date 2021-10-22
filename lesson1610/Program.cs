@@ -124,26 +124,47 @@ namespace lesson1610
             static void Main(string[] args)
             {
                 var text = new StreamReader("Universe.txt");
+                var Star = new Dictionary<int, Stars>();
+                int countstars = 0;
+                while (text.ReadLine() != null)
+                {
+                    countstars++;
+                }
+                text = new StreamReader("Universe.txt");
+                for (int i = 1; i <= countstars; i++)
+                {
+                    string[] prikolnenkotemp = text.ReadLine().Split();
+                    string bright = prikolnenkotemp[0];
+                    string  colour= prikolnenkotemp[1];
+                    string name = prikolnenkotemp[2];
+                    Star.Add(i,new Stars(bright,colour,name));
+                }
                 var Planets = new Dictionary<int, Planetass>();
                 int countplanets = 0;
                 while (text.ReadLine() != null)
                 {
                     countplanets++;
                 }
-                text = new StreamReader("Universe.txt");
                 for (int i = 1; i <= countplanets; i++)
                 {
                     string[] prikolnenkotemp = text.ReadLine().Split();
-                    string bright = prikolnenkotemp[0];
-                    string  colour= prikolnenkotemp[1];
-                    string name = prikolnenkotemp[2];
-                    Planets.Add(i,new Planetass(bright,colour,name));
+                    string name = prikolnenkotemp[3];
+                    int position = int.Parse(prikolnenkotemp[4]);
+                    Planets.Add(i, new Planetass(name,position));
                 }
-                string radius = Console.ReadLine();
-                string satellites = Console.ReadLine();
-                Satellite satellite = new Satellite(radius, satellites);
-                Stars star = new Stars("0,14", "белый", "Вега");
-                Planetass planeta = new Planetass("Земля", 4);
+                var Satellites = new Dictionary<int, Satellite>();
+                int countsatellites = 0;
+                while (text.ReadLine() != null)
+                {
+                    countplanets++;
+                }
+                for (int i = 1; i <= countsatellites; i++)
+                {
+                    string[] prikolnenkotemp = text.ReadLine().Split();
+                    string radius = prikolnenkotemp[5];
+                    string names = prikolnenkotemp[6];
+                    Satellites.Add(i, new Satellite(radius, names));
+                }
             }
         }
     }
