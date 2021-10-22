@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Drawing;
 
 namespace lesson1610
 {
@@ -32,10 +34,10 @@ namespace lesson1610
             Console.WriteLine("Не имеющее строгого определения понятие в астрономии и философии. Оно делится на две принципиально отличающиеся сущности: умозрительную и материальную, доступную наблюдениям в настоящее время или в обозримом будущем");
         }
     }
-    class Planetas : ObjectsofUniverse
+    class Planetass : ObjectsofUniverse
     {
         public int Position { get {return Position; } set { Position = value; } }
-        public Planetas(string nameofobject, int position)
+        public Planetass(string nameofobject, int position)
             : base(nameofobject)
         {
             Position = position;
@@ -121,11 +123,27 @@ namespace lesson1610
         {
             static void Main(string[] args)
             {
+                var text = new StreamReader("Universe.txt");
+                var Planets = new Dictionary<int, Planetass>();
+                int countplanets = 0;
+                while (text.ReadLine() != null)
+                {
+                    countplanets++;
+                }
+                text = new StreamReader("Universe.txt");
+                for (int i = 1; i <= countplanets; i++)
+                {
+                    string[] prikolnenkotemp = text.ReadLine().Split();
+                    string bright = prikolnenkotemp[0];
+                    string  colour= prikolnenkotemp[1];
+                    string name = prikolnenkotemp[2];
+                    Planets.Add(i,new Planetass(bright,colour,name));
+                }
                 string radius = Console.ReadLine();
                 string satellites = Console.ReadLine();
                 Satellite satellite = new Satellite(radius, satellites);
                 Stars star = new Stars("0,14", "белый", "Вега");
-                Planetas planeta = new Planetas("Земля", 4);
+                Planetass planeta = new Planetass("Земля", 4);
             }
         }
     }
